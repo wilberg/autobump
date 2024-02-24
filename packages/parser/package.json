@@ -3,6 +3,7 @@
     "description": "A parser taking in a set of tokens, and producing a set of ASTs.",
     "version": "1.0.0",
     "main": "./src/index.ts",
+    "private": true,
     "dependencies": {
         "@tagup/scanner": "workspace:^"
     }
