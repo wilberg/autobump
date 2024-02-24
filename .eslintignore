@@ -1,0 +1,12 @@
+coverage
+public
+release
+pnpm-lock.yaml
+pnpm-workspace.yaml
+.idea
+node_modules
+.svelte-kit
+.env
+.env.*
+!.env.example
+*.d.ts

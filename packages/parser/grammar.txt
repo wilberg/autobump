@@ -1,0 +1,15 @@
+// This file is only to remind myself of the grammar to be used in this language.
+
+// + one or more
+// * zero or more
+// ? zero or once
+// () group
+// | pipe
+
+fragment = (CONSTANT | tag | block)*;
+tag = "{" expression "}";
+expression = literal | unary | binary | grouping;
+literal = NUMBER | STRING | "true" | "false" | "null";
+grouping = "(" expression ")";
+binary = expression operator expression;
+operator = "==" | "!=" | "<" | "<=" | ">" | ">=" | "+"  | "-"  | "*" | "/" ;

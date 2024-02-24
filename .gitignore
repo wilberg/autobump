@@ -1,1 +1,18 @@
+# Editor Files
+.idea
+.vscode
+.DS_Store
+
+# Development Files
 node_modules
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.env
+.env.*
+!.env.example
+
+# Build Directories
+release
+
+# Logs
+pnpm-debug.log*
