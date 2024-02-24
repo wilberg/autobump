@@ -8,7 +8,6 @@ import { parseReference } from "./parse-reference";
 import { parseExpression } from "./parse-expression";
 import { IfBlock } from "./types/if-block";
 import { Fragment } from "./types/fragment";
-import { peek } from "./peek";
 
 export function parseBlock(context: Context): Block<string> {
     const opener = consume(context);
