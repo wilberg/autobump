@@ -2,7 +2,7 @@
 	"name": "@tagup/compiler",
 	"description": "A super fast and powerful template compiler",
 	"private": false,
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"type": "module",
 	"main": "src/index.ts",
 	"publishConfig": {
