@@ -1,6 +1,6 @@
 {
 	"name": "@tagup/plugin-vite",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"type": "module",
 	"main": "src/index.ts",
 	"module": "src/index.ts",

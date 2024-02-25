@@ -1,10 +1,10 @@
 {
     "name": "@tagup/parser",
     "description": "A parser taking in a set of tokens, and producing a set of ASTs.",
-	"private": true,
-	"version": "1.0.0",
-	"type": "module",
-	"main": "src/index.ts",
+    "private": true,
+    "version": "1.0.1",
+    "type": "module",
+    "main": "src/index.ts",
     "devDependencies": {
         "@tagup/scanner": "workspace:*"
     }
