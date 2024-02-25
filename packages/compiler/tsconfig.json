@@ -1,9 +1,4 @@
 {
-	"extends": "../../tsconfig.json",
-	"include": ["./src"],
-	"compilerOptions": {
-		"paths": {
-			"@tagup/parser": ["../parser/src"]
-		}
-	}
-}
+    "extends": "../../tsconfig.json",
+    "include": ["src"]
+  }

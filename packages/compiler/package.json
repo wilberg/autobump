@@ -2,28 +2,29 @@
 	"name": "@tagup/compiler",
 	"description": "A super fast and powerful template compiler",
 	"private": false,
-	"version": "1.0.1",
+	"version": "1.0.0",
 	"type": "module",
-	"main": "./src/index.ts",
-	"module": "./src/index.ts",
-	"publishConfig": {
-		"template": "package",
-		"data": {
-			"main": "index.js",
-			"types": "index.d.ts"
-		}
-	},
+	"main": "src/index.ts",
+	"module": "src/index.ts",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
-		"prepublishOnly": "node ../../cleanup.cjs"
+		"build": "vite build",
+		"lint": "tsc"
 	},
+	"publishConfig": {
+		"main": "build/index.js",
+		"types": "build/index.d.ts"
+	},
+	"files": [
+		"build/index.js",
+		"build/index.d.ts",
+		"README.md"
+	],
 	"dependencies": {
-		"@tagup/parser": "workspace:^",
-		"@tagup/scanner": "workspace:^"
+		"@tagup/parser": "workspace:*",
+		"@tagup/scanner": "workspace:*"
 	},
 	"devDependencies": {
-		"vite": "^5.1.4",
-		"vite-plugin-dts": "^3.7.3"
+		"@rollup/plugin-typescript": "^11.1.6"
 	}
 }

@@ -6,7 +6,9 @@
 		"lib": ["ES2020", "DOM", "DOM.Iterable"],
 		"skipLibCheck": true,
 		"allowImportingTsExtensions": true,
-		"noEmit": true,
+		"noEmit": false,
+		"emitDeclarationOnly": true,
+		"declaration": true,
 
 		/* Bundler mode */
 		"moduleResolution": "bundler",
@@ -17,6 +19,18 @@
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true
+		"noFallthroughCasesInSwitch": true,
+
+		"paths": {
+			"@tagup/compiler": [
+				"../compiler/src/index.ts"
+			],
+			"@tagup/parser": [
+				"../parser/src/index.ts"
+			],
+			"@tagup/scanner": [
+				"../scanner/src/index.ts"
+			]
+		}
 	}
 }

@@ -1,12 +1,4 @@
 {
-	"extends": "../../tsconfig.json",
-	"include": ["./src"],
-	"compilerOptions": {
-		"typeRoots": [
-			"./tagup.d.ts"
-		],
-		"paths": {
-			"@tagup/compiler": ["../compiler/src"]
-		}
-	}
+  "extends": "../../tsconfig.json",
+  "include": ["src"]
 }

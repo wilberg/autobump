@@ -1,33 +1,11 @@
 {
-	"name": "@tagup/vite",
-	"description": "Vite plugin for tagup",
-	"private": true,
-	"version": "1.0.0",
-	"type": "module",
-	"main": "src/index.ts",
-	"publishConfig": {
-		"directory": "release",
-		"template": "package",
-		"data": {
-			"main": "index.js",
-			"types": "index.d.ts"
-		}
-	},
-	"files": [
-		"release/index.js",
-		"release/index.d.ts",
-		"CHANGELOG.md"
-	],
+    "name": "@tagup/plugin-vite",
 	"scripts": {
 		"dev": "vite",
-		"build": "tsc && vite build",
-		"prepublishOnly": "node ../../cleanup.cjs"
+		"build": "vite build",
+		"lint": "tsc"
 	},
-	"dependencies": {
-		"@tagup/compiler": "workspace:^"
-	},
-	"devDependencies": {
-		"vite": "^5.1.4",
-		"vite-plugin-dts": "^3.7.3"
-	}
+    "dependencies": {
+        "@tagup/compiler": "workspace:*"
+    }
 }

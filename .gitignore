@@ -10,6 +10,7 @@ vite.config.ts.timestamp-*
 .env
 .env.*
 !.env.example
+.turbo
 
 # Build Directories
 release
