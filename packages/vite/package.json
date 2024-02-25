@@ -1,7 +1,7 @@
 {
 	"name": "@tagup/vite",
 	"description": "Vite plugin for tagup",
-	"private": false,
+	"private": true,
 	"version": "1.0.0",
 	"type": "module",
 	"main": "src/index.ts",
