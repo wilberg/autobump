@@ -9,13 +9,13 @@ function i(e, a, r, t = [0, 0]) {
     range: [r[0], r[1]]
   };
 }
-function c(e) {
+function p(e) {
   return e[1]++, e;
 }
 function $(e) {
   e[0] = e[1];
 }
-function o(e, a) {
+function f(e, a) {
   return a.charAt(e[1]);
 }
 function m(e) {
@@ -30,24 +30,24 @@ function B(e) {
 function y(e) {
   return e[0] === e[1];
 }
-function D(e) {
+function R(e) {
   return e === " " || e === "	" || e === `
 ` || e === "\r";
 }
-function R(e) {
+function E(e) {
   return m(e) || k(e);
 }
-function E(e, a = []) {
+function A(e, a = []) {
   const r = [], t = [0, 0];
   for (; B(t) < e.length; ) {
-    let s = o(t, e);
+    let s = f(t, e);
     if (s === "{") {
-      for (y(t) || r.push(i(n.Constant, e, t)), $(t), c(t), r.push(i(n.DelimiterLeft, e, t)), $(t); o(t, e) !== "}"; ) {
-        switch (s = o(t, e), c(t), s) {
+      for (y(t) || r.push(i(n.Constant, e, t)), $(t), p(t), r.push(i(n.DelimiterLeft, e, t)), $(t); f(t, e) !== "}"; ) {
+        switch (s = f(t, e), p(t), s) {
           case '"':
-            for (c(t); o(t, e) !== '"' && B(t) < e.length; )
-              c(t);
-            c(t), r.push(i(n.String, e, t, [1, -1]));
+            for (p(t); f(t, e) !== '"' && B(t) < e.length; )
+              p(t);
+            p(t), r.push(i(n.String, e, t, [1, -1]));
             break;
           case ",":
             r.push(i(n.Comma, e, t));
@@ -68,52 +68,52 @@ function E(e, a = []) {
             r.push(i(n.ParenthesisRight, e, t));
             break;
           case "#":
-            if (m(o(t, e))) {
-              for (s = o(t, e); m(s) || k(s); )
-                s = o(c(t), e);
+            if (m(f(t, e))) {
+              for (s = f(t, e); m(s) || k(s); )
+                s = f(p(t), e);
               r.push(i(n.BlockOpen, e, t, [1, 0]));
             } else
               r.push(i(n.Hash, e, t));
             break;
           case "/":
-            if (m(o(t, e))) {
-              for (s = o(t, e); m(s) || k(s); )
-                s = o(c(t), e);
+            if (m(f(t, e))) {
+              for (s = f(t, e); m(s) || k(s); )
+                s = f(p(t), e);
               r.push(i(n.BlockClose, e, t, [1, 0]));
             } else
               r.push(i(n.Slash, e, t));
             break;
           case ":":
-            if (m(o(t, e))) {
-              for (s = o(t, e); m(s) || k(s); )
-                s = o(c(t), e);
+            if (m(f(t, e))) {
+              for (s = f(t, e); m(s) || k(s); )
+                s = f(p(t), e);
               r.push(i(n.BlockAlternate, e, t, [1, 0]));
             } else
               r.push(i(n.Colon, e, t));
             break;
           default:
             if (m(s)) {
-              for (; R(o(t, e)); )
-                c(t);
-              const f = C(t, e);
-              r.push(i(a.includes(f) ? n.Reserved : n.Identifier, e, t));
+              for (; E(f(t, e)); )
+                p(t);
+              const o = C(t, e);
+              r.push(i(a.includes(o) ? n.Reserved : n.Identifier, e, t));
             } else if (k(s)) {
-              for (; k(o(t, e)); )
-                c(t);
+              for (; k(f(t, e)); )
+                p(t);
               r.push(i(n.Number, e, t));
             } else
-              D(s) || console.log("Unexpected character:", s);
+              R(s) || console.log("Unexpected character:", s);
             break;
         }
         $(t);
       }
-      c(t), r.push(i(n.DelimiterRight, e, t)), $(t);
+      p(t), r.push(i(n.DelimiterRight, e, t)), $(t);
     } else
-      c(t);
+      p(t);
   }
   return y(t) || r.push(i(n.Constant, e, t)), r;
 }
-function p(e, a) {
+function c(e, a) {
   const r = e.tokens[e.index++];
   return a && r.type !== a.type && (!a.value || r.value === a.value) && e.errors.push({
     message: `[${r.type}]: ${a.message}`
@@ -123,7 +123,7 @@ function w(e, a = 0) {
   return e.tokens[e.index + a];
 }
 function I(e) {
-  const a = p(e, { type: n.Identifier, message: "Identifier expected." });
+  const a = c(e, { type: n.Identifier, message: "Identifier expected." });
   let r = {
     type: "Identifier",
     from: a.range[0],
@@ -131,8 +131,8 @@ function I(e) {
     name: a.value
   };
   for (; w(e).type === n.Dot; ) {
-    p(e);
-    const t = p(e, { type: n.Identifier, message: "Expected identifier" });
+    c(e);
+    const t = c(e, { type: n.Identifier, message: "Expected identifier" });
     r = {
       type: "Member",
       object: r,
@@ -156,14 +156,14 @@ function L(e) {
       r = I(e);
       break;
     case n.String:
-      p(e), r = {
+      c(e), r = {
         type: "Literal",
         kind: "string",
         value: a.value
       };
       break;
     case n.Number:
-      p(e), r = {
+      c(e), r = {
         type: "Literal",
         kind: "number",
         value: +a.value
@@ -172,12 +172,12 @@ function L(e) {
   }
   return r;
 }
-function A(e) {
-  switch (p(e).value) {
+function F(e) {
+  switch (c(e).value) {
     case "for":
-      const t = p(e, { type: n.Identifier, message: "Exected identifier" });
-      p(e, { type: n.Reserved, value: "as", message: "Expected reserved keyword 'as' following variable" });
-      const s = I(e), f = d(e, (h) => h.type !== n.BlockClose || h.value !== "for");
+      const t = c(e, { type: n.Identifier, message: "Exected identifier" });
+      c(e, { type: n.Reserved, value: "as", message: "Expected reserved keyword 'as' following variable" });
+      const s = I(e), o = d(e, (h) => h.type !== n.BlockClose || h.value !== "for");
       return {
         type: "ForBlock",
         iterator: s,
@@ -187,13 +187,13 @@ function A(e) {
         },
         from: 0,
         to: 0,
-        fragment: f
+        fragment: o
       };
     case "if":
       const l = L(e);
       let g = !1;
       const v = d(e, (h) => h.type === n.BlockAlternate ? (g = !0, !1) : h.type !== n.BlockClose || h.value !== "if", "Unclosed if statement");
-      p(e, {
+      c(e, {
         type: n.DelimiterRight,
         message: "Expected right delimiter"
       });
@@ -225,7 +225,7 @@ function d(e, a, r) {
     to: 0,
     content: []
   };
-  let s = p(e);
+  let s = c(e);
   for (; e.index <= e.tokens.length && (!a || a(s)); ) {
     switch (s.type) {
       case n.Constant:
@@ -238,23 +238,23 @@ function d(e, a, r) {
         break;
       case n.DelimiterLeft:
         if (s = w(e), s.type === n.BlockOpen)
-          t.content.push(A(e));
+          t.content.push(F(e));
         else if (s.type !== n.BlockClose && s.type !== n.BlockAlternate) {
-          const f = L(e), l = p(e, { type: n.DelimiterRight, message: "Expected tag closer." });
+          const o = L(e), l = c(e, { type: n.DelimiterRight, message: "Expected tag closer." });
           t.content.push({
             type: "Tag",
-            expression: f,
+            expression: o,
             from: s.range[0],
             to: l.range[1]
           });
         }
         break;
     }
-    s = p(e);
+    s = c(e);
   }
   return !s && r && e.errors.push({ message: r }), t;
 }
-function F(e) {
+function S(e) {
   const a = {
     tokens: e,
     errors: [],
@@ -267,18 +267,17 @@ function F(e) {
     fragment: r
   };
 }
-function S(e, a) {
-  const r = E(e, ["for", "if", "else", "in"]), t = F(r);
-  return a(t);
+function j(e, a = D) {
+  return a(S(A(e, ["for", "if", "else", "in"])));
 }
-const j = (e, a = "data", r = []) => {
+const N = (e, a = "data", r = []) => {
   const t = e.fragment.content.map((l) => u(l, a, r)).join(""), s = e.alternate ? e.alternate.content.map((l) => u(l, a, r)).join("") : "";
-  let f = "${";
-  return f += `${u(e.test, a, r)} ? \`${t}\` : \`${s}\``, f += "}", f;
-}, N = (e, a = "data", r = []) => {
-  const t = u(e.variable, null), s = u(e.iterator, a, r), f = e.fragment.content.map((g) => u(g, a, [...r, t])).join("");
+  let o = "${";
+  return o += `${u(e.test, a, r)} ? \`${t}\` : \`${s}\``, o += "}", o;
+}, U = (e, a = "data", r = []) => {
+  const t = u(e.variable, null), s = u(e.iterator, a, r), o = e.fragment.content.map((g) => u(g, a, [...r, t])).join("");
   let l = "${";
-  return l += "(() => {", l += "let output='';", l += `for (const ${t} of ${s}) {`, l += `output += \`${f}\``, l += "}", l += "return output", l += "})()", l += "}", l;
+  return l += "(() => {", l += "let output='';", l += `for (const ${t} of ${s}) {`, l += `output += \`${o}\``, l += "}", l += "return output", l += "})()", l += "}", l;
 }, u = (e, a = "data", r = []) => {
   let t = "";
   switch (e.type) {
@@ -302,14 +301,14 @@ const j = (e, a = "data", r = []) => {
       b.kind === "string" ? t += `"${b.value}"` : t += `${b.value}`;
       break;
     case "ForBlock":
-      t += N(e, a, r);
+      t += U(e, a, r);
       break;
     case "IfBlock":
-      t += j(e, a, r);
+      t += N(e, a, r);
       break;
   }
   return t;
-}, U = (e) => {
+}, D = (e) => {
   let a = "(data)=>`";
   return e.fragment.content.forEach((r) => {
     a += u(r);
@@ -318,7 +317,7 @@ const j = (e, a = "data", r = []) => {
   name: "Tagup Plugin",
   transform(e, a) {
     var r;
-    return ((r = a.split("/").pop()) == null ? void 0 : r.split(".").pop()) === "tu" ? `export default ${S(e, U)}` : e;
+    return ((r = a.split("/").pop()) == null ? void 0 : r.split(".").pop()) === "tu" ? `export default ${j(e, D)}` : e;
   }
 });
 export {

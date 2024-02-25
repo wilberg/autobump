@@ -1,5 +1,12 @@
 # @tagup/plugin-vite
 
+## 1.0.1
+
+### Patch Changes
+
+- Updated dependencies [09980f5]
+  - @tagup/compiler@1.0.2
+
 ## null
 
 ### Patch Changes
