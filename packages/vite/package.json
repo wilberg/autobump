@@ -6,6 +6,12 @@
 		"build": "vite build",
 		"lint": "tsc"
 	},
+	"files": [
+		"build/index.js",
+		"build/index.d.ts",
+		"README.md",
+		"CHANGELOG.md"
+	],
 	"dependencies": {
 		"@tagup/compiler": "workspace:*"
 	}
