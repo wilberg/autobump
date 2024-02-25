@@ -1,11 +1,12 @@
 {
-    "name": "@tagup/plugin-vite",
+	"name": "@tagup/plugin-vite",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
 		"lint": "tsc"
 	},
-    "dependencies": {
-        "@tagup/compiler": "workspace:*"
-    }
+	"dependencies": {
+		"@tagup/compiler": "workspace:*"
+	},
+	"version": null
 }
