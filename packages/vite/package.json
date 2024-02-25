@@ -20,7 +20,7 @@
 		"README.md",
 		"CHANGELOG.md"
 	],
-	"dependencies": {
+	"devDependencies": {
 		"@tagup/compiler": "workspace:*"
 	}
 }

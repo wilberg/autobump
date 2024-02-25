@@ -20,11 +20,9 @@
 		"build/index.d.ts",
 		"README.md"
 	],
-	"dependencies": {
+	"devDependencies": {
+		"@rollup/plugin-typescript": "^11.1.6",
 		"@tagup/parser": "workspace:*",
 		"@tagup/scanner": "workspace:*"
-	},
-	"devDependencies": {
-		"@rollup/plugin-typescript": "^11.1.6"
 	}
 }
