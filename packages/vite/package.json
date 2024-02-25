@@ -1,26 +1,30 @@
 {
-	"name": "@tagup/compiler",
-	"description": "A super fast and powerful template compiler",
+	"name": "@tagup/vite",
+	"description": "Vite plugin for tagup",
 	"private": false,
 	"version": "1.0.0",
 	"type": "module",
-	"main": "./src/index.ts",
-	"module": "./src/index.ts",
+	"main": "src/index.ts",
 	"publishConfig": {
+		"directory": "release",
 		"template": "package",
 		"data": {
 			"main": "index.js",
 			"types": "index.d.ts"
 		}
 	},
+	"files": [
+		"release/index.js",
+		"release/index.d.ts",
+		"CHANGELOG.md"
+	],
 	"scripts": {
 		"dev": "vite",
 		"build": "tsc && vite build",
 		"prepublishOnly": "node ../../cleanup.cjs"
 	},
 	"dependencies": {
-		"@tagup/parser": "workspace:^",
-		"@tagup/scanner": "workspace:^"
+		"@tagup/compiler": "workspace:^"
 	},
 	"devDependencies": {
 		"vite": "^5.1.4",
