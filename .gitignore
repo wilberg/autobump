@@ -13,7 +13,7 @@ vite.config.ts.timestamp-*
 .turbo
 
 # Build Directories
-build/**
+build
 
 # Logs
 pnpm-debug.log*
