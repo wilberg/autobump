@@ -16,12 +16,14 @@ export function parsePrimary(context: Context): Expression<string>|null {
             consume(context);
             return {
                 type: "Literal",
+                kind: "number",
                 value: +token.value
             } as Literal;
         case TokenType.String:
             consume(context);
             return {
                 type: "Literal",
+                kind: "string",
                 value: token.value
             } as Literal;
         case TokenType.Identifier:
