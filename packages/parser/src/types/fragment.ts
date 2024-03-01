@@ -1,5 +1,3 @@
 import { AstNode } from "./ast-node";
 
-export type Fragment = AstNode<"Fragment"> & {
-    content: AstNode<string>[]
-}
+export type Fragment<T extends string> = AstNode<T>;

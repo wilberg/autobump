@@ -80,7 +80,7 @@ const transpile = (node: AstNode<string>, prefix: string | null = "data", ignore
 export const JSAdapter: Adapter<string> = (program) => {
     let buffer = `(data)=>\``;
 
-    program.fragment.content.forEach(node => {
+    program.fragments.forEach(node => {
       buffer += transpile(node);
     });
 

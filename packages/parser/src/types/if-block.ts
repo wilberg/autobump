@@ -1,8 +1,8 @@
+import { AstNode } from "./ast-node";
 import { Block } from "./block";
 import { Expression } from "./expression";
-import { Fragment } from "./fragment";
 
 export type IfBlock = Block<"IfBlock"> & {
     test: Expression<string>
-    alternate: Fragment|null
+    alternate: AstNode<string>[]|null
 }

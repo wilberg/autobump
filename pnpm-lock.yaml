@@ -55,6 +55,19 @@ importers:
         specifier: ^4.3.1
         version: 4.3.1(typescript@5.3.3)(vite@5.1.4)
 
+  apps/playground:
+    dependencies:
+      '@tagup/compiler':
+        specifier: workspace:*
+        version: link:../../packages/compiler
+    devDependencies:
+      typescript:
+        specifier: ^5.2.2
+        version: 5.3.3
+      vite:
+        specifier: ^5.1.4
+        version: 5.1.4(@types/node@20.11.19)
+
   packages/compiler:
     devDependencies:
       '@rollup/plugin-typescript':

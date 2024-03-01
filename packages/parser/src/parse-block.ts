@@ -1,13 +1,13 @@
 import { TokenType } from "@tagup/scanner";
 import { consume } from "./consume";
-import { parseFragment } from "./parse-fragment";
+import { parseFragments } from "./parse-fragments";
 import { Block } from "./types/block";
 import { Context } from "./types/context";
 import { ForBlock } from "./types/for-block";
 import { parseReference } from "./parse-reference";
 import { parseExpression } from "./parse-expression";
 import { IfBlock } from "./types/if-block";
-import { Fragment } from "./types/fragment";
+import { AstNode } from "./types/ast-node";
 
 export function parseBlock(context: Context): Block<string> {
     const opener = consume(context);
@@ -18,7 +18,7 @@ export function parseBlock(context: Context): Block<string> {
             consume(context, { type: TokenType.Reserved, value: "as", message: "Expected reserved keyword 'as' following variable"});
             const iterator = parseReference(context);
 
-            const forFragment = parseFragment(context, (token) => token.type !== TokenType.BlockClose || token.value !== 'for');
+            const forFragments = parseFragments(context, (token) => token.type !== TokenType.BlockClose || token.value !== 'for');
             
             return {
                 type: "ForBlock",
@@ -29,13 +29,13 @@ export function parseBlock(context: Context): Block<string> {
                 },
                 from: 0,
                 to: 0,
-                fragment: forFragment
+                fragments: forFragments
             } as ForBlock
         case "if":
             const expression = parseExpression(context);
 
             let hasAlternate = false;
-            const ifFragment = parseFragment(context, (token) => {
+            const ifFragments = parseFragments(context, (token) => {
                 if (token.type === TokenType.BlockAlternate) {
                     hasAlternate = true;
                     return false;
@@ -48,10 +48,10 @@ export function parseBlock(context: Context): Block<string> {
                 message: "Expected right delimiter"
             });
 
-            let alternate: Fragment|null = null;
+            let alternate: AstNode<string>[]|null = null;
             if (hasAlternate) {
                 // Also collect the alternate
-                alternate = parseFragment(context, (token) => {
+                alternate = parseFragments(context, (token) => {
                     return token.type !== TokenType.BlockClose || token.value !== 'if'
                 }, "If statement never closed");
             }
@@ -61,7 +61,7 @@ export function parseBlock(context: Context): Block<string> {
                 from: 0,
                 to: 0,
                 test: expression,
-                fragment: ifFragment,
+                fragments: ifFragments,
                 alternate: alternate
             } as IfBlock
         default:
@@ -70,12 +70,12 @@ export function parseBlock(context: Context): Block<string> {
             })
     }
 
-    const fragment = parseFragment(context, (token) => token.type !== TokenType.BlockClose);
+    const fragments = parseFragments(context, (token) => token.type !== TokenType.BlockClose);
 
     return {
         type: "UnknownBlock",
         from: 0,
         to: 0,
-        fragment
+        fragments
     }
 }
