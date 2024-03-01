@@ -6,7 +6,7 @@ import { Member } from "./types/member";
 import { peek } from "./peek";
 
 export function parseReference(context: Context): Identifier|Member {
-    const token = consume(context, { type: TokenType.Identifier, message: "Identifier expected." });
+    const token = consume(context, { type: TokenType.Identifier, message: "Identifier expected." })!;
 
     let expression: Identifier|Member = {
         type: "Identifier",
@@ -15,9 +15,9 @@ export function parseReference(context: Context): Identifier|Member {
         name: token.value
     } as Identifier;
 
-    while (peek(context).type === TokenType.Dot) {
+    while (peek(context)?.type === TokenType.Dot) {
         consume(context); // Consume the dot.
-        const identifier = consume(context, { type: TokenType.Identifier, message: "Expected identifier" });
+        const identifier = consume(context, { type: TokenType.Identifier, message: "Expected identifier" })!;
         expression = {
             type: "Member",
             object: expression,

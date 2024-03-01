@@ -5,6 +5,7 @@ export enum TokenType {
     Colon = "colon",
     Dot = "dot",
     Plus = "plus",
+    Minus = "minus",
     GreaterThan = "greater-than",
     LessThan = "less-than",
     ParenthesisLeft = "parenthesis-left",
@@ -14,9 +15,13 @@ export enum TokenType {
     BlockClose = "block-close",
     Hash = "hash",
     Slash = "slash",
+    Star = "star",
+    Bang = "bang",
     DelimiterLeft = "delimiter-left",
     DelimiterRight = "delimiter-right",
     Constant = "constant",
     Identifier = "identifier",
-    Reserved = "reserved"
+    Reserved = "reserved",
+    Equal = "equal",
+    NotEqual = "not-equal"
 }

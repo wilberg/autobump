@@ -10,7 +10,7 @@ import { AstNode } from "./types/ast-node";
 
 export function parseFragments(context: Context, predicate?: (token: Token) => boolean, message?: string): AstNode<string>[] {
     const fragments: AstNode<string>[] = [];
-    let token = consume(context);
+    let token: Token = consume(context)!;
     while (context.index <= context.tokens.length && (!predicate || predicate(token))) {
         switch (token.type) {
             case TokenType.Constant:
@@ -22,12 +22,12 @@ export function parseFragments(context: Context, predicate?: (token: Token) => b
                 } as Constant)
                 break;
             case TokenType.DelimiterLeft:
-                token = peek(context);
+                token = peek(context)!;
                 if (token.type === TokenType.BlockOpen) {
                     fragments.push(parseBlock(context))
                 } else if (token.type !== TokenType.BlockClose && token.type !== TokenType.BlockAlternate) {
                     const expression = parseExpression(context);
-                    const closer = consume(context, { type: TokenType.DelimiterRight, message: `Expected tag closer.` });
+                    const closer = consume(context, { type: TokenType.DelimiterRight, message: `Expected tag closer.` })!;
                     fragments.push({
                         type: "Tag",
                         expression,
@@ -38,7 +38,7 @@ export function parseFragments(context: Context, predicate?: (token: Token) => b
                 break;
         }
 
-        token = consume(context)
+        token = consume(context)!;
     }
 
     if (!token && message) {

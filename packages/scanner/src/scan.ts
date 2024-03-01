@@ -12,6 +12,7 @@ import {isCollapsed} from "./is-collapsed.ts";
 import {isWhitespace} from "./is-whitespace.ts";
 import {isLetterOrNumber} from "./is-letter-or-number.ts";
 import {TokenType} from "./types/token-type.ts";
+import { peek } from "./peek.ts";
 
 export function scan(source: string, reserved: readonly string[] = []) {
     const tokens: Token[] = [];
@@ -47,6 +48,18 @@ export function scan(source: string, reserved: readonly string[] = []) {
                         break;
                     case ".":
                         tokens.push(create(TokenType.Dot, source, range));
+                        break;
+                    case "+":
+                        tokens.push(create(TokenType.Plus, source, range));
+                        break;
+                    case "-":
+                        tokens.push(create(TokenType.Minus, source, range));
+                        break;
+                    case "*":
+                        tokens.push(create(TokenType.Star, source, range));
+                        break;
+                    case "!":
+                        tokens.push(create(TokenType.Bang, source, range));
                         break;
                     case ">":
                         tokens.push(create(TokenType.GreaterThan, source, range));

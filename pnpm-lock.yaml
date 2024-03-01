@@ -60,6 +60,12 @@ importers:
       '@tagup/compiler':
         specifier: workspace:*
         version: link:../../packages/compiler
+      '@tagup/parser':
+        specifier: workspace:*
+        version: link:../../packages/parser
+      '@tagup/scanner':
+        specifier: workspace:*
+        version: link:../../packages/scanner
     devDependencies:
       typescript:
         specifier: ^5.2.2

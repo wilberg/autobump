@@ -18,7 +18,8 @@
 	"files": [
 		"build/index.js",
 		"build/index.d.ts",
-		"README.md"
+		"README.md",
+		"CHANGELOG.md"
 	],
 	"devDependencies": {
 		"@rollup/plugin-typescript": "^11.1.6",

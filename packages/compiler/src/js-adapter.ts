@@ -7,13 +7,16 @@ import { Identifier } from "@tagup/parser/src/types/identifier";
 import { Literal } from "@tagup/parser/src/types/literal";
 import { Member } from "@tagup/parser/src/types/member";
 import { Tag } from "@tagup/parser/src/types/tag";
+import { Binary } from "@tagup/parser/src/types/binary";
+import { Unary } from "@tagup/parser/src/types/unary";
+import { Grouping } from "@tagup/parser/src/types/grouping";
 
 const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     const fragment = node.fragments.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
     const alternate = node.alternate ? node.alternate.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('') : ''
   
     let buffer = '${';
-    buffer += `${transpile(node.test, prefix, ignorePrefix)} ? \`${fragment}\` : \`${alternate}\``
+    buffer += `${transpile(node.test, prefix, ignorePrefix)}?\`${fragment}\`:\`${alternate}\``
     buffer += '}'
   
     return buffer;
@@ -42,6 +45,21 @@ const transpileLoop = (node: ForBlock, prefix: string | null = "data", ignorePre
 const transpile = (node: AstNode<string>, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     let buffer = ``;
     switch (node.type) {
+        case "Grouping":
+            const grouping = node as Grouping;
+            buffer += `(${transpile(grouping.expression, prefix, ignorePrefix)})`
+            break;
+        case "Unary":
+            const unary = node as Unary;
+            const unaryRight = transpile(unary.right, prefix, ignorePrefix)
+            buffer += `${unary.operator}${unaryRight}`;
+            break;
+        case "Binary":
+            const binary = node as Binary;
+            const binaryLeft = transpile(binary.left, prefix, ignorePrefix);
+            const binaryRight = transpile(binary.right, prefix, ignorePrefix)
+            buffer += `${binaryLeft}${binary.operator}${binaryRight}`;
+            break;
         case "Constant":
             const constant = node as Constant;
             buffer += `${constant.value}`;
