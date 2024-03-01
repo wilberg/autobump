@@ -1,5 +1,11 @@
 # @tagup/compiler
 
+## 2.1.0
+
+### Minor Changes
+
+- 08f7691: Properly handle literals
+
 ## 2.0.0
 
 ### Major Changes

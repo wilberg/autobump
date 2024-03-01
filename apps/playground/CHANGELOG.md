@@ -1,5 +1,12 @@
 # @tagup/playground
 
+## 0.0.4
+
+### Patch Changes
+
+- Updated dependencies [08f7691]
+  - @tagup/compiler@2.1.0
+
 ## 0.0.3
 
 ### Patch Changes
