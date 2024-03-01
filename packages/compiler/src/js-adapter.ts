@@ -9,8 +9,8 @@ import { Member } from "@tagup/parser/src/types/member";
 import { Tag } from "@tagup/parser/src/types/tag";
 
 const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
-    const fragment = node.fragment.content.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
-    const alternate = node.alternate ? node.alternate.content.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('') : ''
+    const fragment = node.fragments.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
+    const alternate = node.alternate ? node.alternate.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('') : ''
   
     let buffer = '${';
     buffer += `${transpile(node.test, prefix, ignorePrefix)} ? \`${fragment}\` : \`${alternate}\``
@@ -22,7 +22,7 @@ const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix
 const transpileLoop = (node: ForBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     const variable = transpile(node.variable, null);
     const iterator = transpile(node.iterator, prefix, ignorePrefix);
-    const fragment = node.fragment.content.map(subnode => transpile(subnode, prefix, [...ignorePrefix, variable])).join('');
+    const fragment = node.fragments.map(subnode => transpile(subnode, prefix, [...ignorePrefix, variable])).join('');
 
     let buffer = '${';
 
