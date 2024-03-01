@@ -1,5 +1,11 @@
 # @tagup/parser
 
+## 1.0.2
+
+### Patch Changes
+
+- 22c0201: Fragment is now an array of regular nodes
+
 ## 1.0.1
 
 ### Patch Changes

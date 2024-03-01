@@ -1,5 +1,11 @@
 # @tagup/compiler
 
+## 1.0.4
+
+### Patch Changes
+
+- 22c0201: Fragment is now an array of regular nodes
+
 ## 1.0.3
 
 ### Patch Changes
