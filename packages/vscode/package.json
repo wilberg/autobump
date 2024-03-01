@@ -1,0 +1,25 @@
+{
+  "name": "tagup",
+  "displayName": "Tagup",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.87.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "tagup",
+      "aliases": ["Tagup", "tagup"],
+      "extensions": [".tu"],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "tagup",
+      "scopeName": "source.tu",
+      "path": "./syntaxes/tagup.tmLanguage.json"
+    }]
+  }
+}

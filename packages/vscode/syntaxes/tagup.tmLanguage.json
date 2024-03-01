@@ -1,0 +1,66 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Tagup",
+	"patterns": [
+		{
+			"include": "#block"
+		}
+	],
+	"repository": {
+		"operator": {
+			"match": "\\+|-|\\*|/|\\(|\\)|>|<|>=|<=|==|!=",
+			"name": "keyword.operator.tagup"
+		},
+		"string": {
+			"match": "\".*?\"",
+			"name": "string.quoted.double.tagup"
+		},
+		"number": {
+			"match": "\\b\\d+\\b",
+			"name": "constant.numeric.tagup"
+		},
+		"identifier": {
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b",
+			"name": "variable.other.tagup"
+		},
+		"keyword": {
+            "match": "(#if|/if|#for|/for|:else)",
+            "name": "keyword.control.tagup"
+        },
+		"block": {
+			"begin": "\\{",
+			"end": "\\}",
+			"beginCaptures": {
+				"0": {
+					"name": "markup.bold"
+				}
+			},
+			"endCaptures": {
+				"0": {
+					"name": "markup.bold"
+				}
+			},
+			"patterns": [
+				{
+					"include": "#keyword"
+				},
+				{
+					"include": "#prefix"
+				},
+				{
+					"include": "#operator"
+				},
+				{
+					"include": "#identifier"
+				},
+				{
+					"include": "#number"
+				},
+				{
+					"include": "#string"
+				}
+			]
+		}
+	},
+	"scopeName": "source.tu"
+}
