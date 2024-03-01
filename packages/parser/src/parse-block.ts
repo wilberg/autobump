@@ -10,11 +10,11 @@ import { IfBlock } from "./types/if-block";
 import { AstNode } from "./types/ast-node";
 
 export function parseBlock(context: Context): Block<string> {
-    const opener = consume(context);
+    const opener = consume(context)!;
     
     switch (opener.value) {
         case "for":
-            const variable = consume(context, { type: TokenType.Identifier, message: "Exected identifier" });
+            const variable = consume(context, { type: TokenType.Identifier, message: "Exected identifier" })!;
             consume(context, { type: TokenType.Reserved, value: "as", message: "Expected reserved keyword 'as' following variable"});
             const iterator = parseReference(context);
 
