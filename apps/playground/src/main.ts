@@ -1,7 +1,7 @@
 import { JSAdapter, compile } from '@tagup/compiler';
 
 const source = `
-{#if (person.age + 10) > 18}
+{#if person.age + 10 > 18}
 You are old enough.
 {:else}
 You are too young.

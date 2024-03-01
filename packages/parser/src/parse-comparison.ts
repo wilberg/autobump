@@ -11,8 +11,10 @@ export function parseComparison(context: Context): Expression<string> {
 
     let type: TokenType | null;
     while (type = peek(context)?.type ?? null,
-        type === TokenType.GreaterThan ||
-        type === TokenType.LessThan
+        type === TokenType.Greater ||
+        type === TokenType.GreaterEqual ||
+        type === TokenType.Less ||
+        type === TokenType.LessEqual
     ) {
         const operator = consume(context)!;
         const right = parseTerm(context);

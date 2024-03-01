@@ -15,6 +15,7 @@ term = factor ( ( "-" | "+" ) factor )*;
 factor = unary ( ( "*" | "/" ) unary )*;
 unary = ( "!" | "-" ) unary | primary;
 reference = IDENTIFIER ( "." IDENTIFIER )*;
+call = reference "(" (expression)* ")";
 primary = NUMBER | STRING | "true" | "false" | "null" | reference | "(" expression ")";
 
 fragment

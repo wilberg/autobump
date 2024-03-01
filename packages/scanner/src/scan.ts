@@ -12,7 +12,6 @@ import {isCollapsed} from "./is-collapsed.ts";
 import {isWhitespace} from "./is-whitespace.ts";
 import {isLetterOrNumber} from "./is-letter-or-number.ts";
 import {TokenType} from "./types/token-type.ts";
-import { peek } from "./peek.ts";
 
 export function scan(source: string, reserved: readonly string[] = []) {
     const tokens: Token[] = [];
@@ -62,16 +61,32 @@ export function scan(source: string, reserved: readonly string[] = []) {
                         tokens.push(create(TokenType.Bang, source, range));
                         break;
                     case ">":
-                        tokens.push(create(TokenType.GreaterThan, source, range));
+                        if (pick(range, source) === "=") {
+                            advance(range);
+                            tokens.push(create(TokenType.GreaterEqual, source, range));
+                        } else {
+                            tokens.push(create(TokenType.Greater, source, range));
+                        }
                         break;
                     case "<":
-                        tokens.push(create(TokenType.LessThan, source, range));
+                        if (pick(range, source) === "=") {
+                            advance(range);
+                            tokens.push(create(TokenType.LessEqual, source, range));
+                        } else {
+                            tokens.push(create(TokenType.Less, source, range));
+                        }
                         break;
                     case "(":
                         tokens.push(create(TokenType.ParenthesisLeft, source, range));
                         break;
                     case ")":
                         tokens.push(create(TokenType.ParenthesisRight, source, range));
+                        break;
+                    case "=":
+                        if (pick(range, source) === "=") {
+                            advance(range);
+                            tokens.push(create(TokenType.Equal, source, range));
+                        }
                         break;
                     case "#":
                         if (isLetter(pick(range, source))) {
