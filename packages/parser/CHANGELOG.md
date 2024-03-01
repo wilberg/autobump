@@ -1,5 +1,11 @@
 # @tagup/parser
 
+## 2.1.0
+
+### Minor Changes
+
+- e534344: Properly parsed strings
+
 ## 2.0.0
 
 ### Major Changes
