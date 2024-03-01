@@ -1,5 +1,11 @@
 # @tagup/compiler
 
+## 2.0.0
+
+### Major Changes
+
+- d311215: Added support for more complex expressions, such as comparisons, negations, calculations, equality.
+
 ## 1.0.4
 
 ### Patch Changes
