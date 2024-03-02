@@ -1,4 +1,3 @@
-import * as fs from 'fs';
 import { IfBlock } from "@tagup/parser/src/types/if-block";
 import { Adapter } from "./types/adapter"
 import { ForBlock } from "@tagup/parser/src/types/for-block";
@@ -14,7 +13,6 @@ import { Grouping } from "@tagup/parser/src/types/grouping";
 import { Call } from "@tagup/parser/src/types/call";
 import { List } from "@tagup/parser/src/types/list";
 import { Use } from "@tagup/parser/src/types/use";
-import { compile } from '.';
 
 const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     const fragment = node.fragments.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
