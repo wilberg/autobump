@@ -1,9 +1,12 @@
 {
-  "name": "tagup",
-  "displayName": "Tagup",
-  "private": true,
-  "description": "",
+  "name": "@tagup/vscode",
+  "displayName": "Tagup Language Support",
+  "private": false,
+  "description": "Language support for tagup",
   "version": "0.0.1",
+  "repository": {
+
+  },
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -25,6 +28,6 @@
   },
   "scripts": {
     "prepublish": "vsce package",
-    "publish": "vsce publish"
+    "publish": "vsce publish --allow-missing-repository --skip-license --skip-duplicate"
   }
 }
