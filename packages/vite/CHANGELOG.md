@@ -1,5 +1,11 @@
 # @tagup/plugin-vite
 
+## 2.3.2
+
+### Patch Changes
+
+- b01be74: Print use path as string
+
 ## 2.3.1
 
 ### Patch Changes
