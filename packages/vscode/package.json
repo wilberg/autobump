@@ -1,5 +1,5 @@
 {
-  "name": "@tagup/vscode",
+  "name": "tagup-language-support",
   "displayName": "Tagup Language Support",
   "private": false,
   "description": "Language support for tagup",
