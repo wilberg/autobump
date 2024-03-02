@@ -50,7 +50,7 @@ const transpile = (node: AstNode<string>, prefix: string | null = "data", ignore
     switch (node.type) {
         case "Use":
             const use = node as Use;
-            buffer += `/* import from "${use.path}" not yet supported */`;
+            buffer += `"use: ${use.path}"`;
             break;
         case "List":
             const list = node as List;
