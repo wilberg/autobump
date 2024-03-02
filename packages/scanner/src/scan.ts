@@ -82,6 +82,12 @@ export function scan(source: string, reserved: readonly string[] = []) {
                     case ")":
                         tokens.push(create(TokenType.ParenthesisRight, source, range));
                         break;
+                    case "[":
+                        tokens.push(create(TokenType.BracketLeft, source, range));
+                        break;
+                    case "]":
+                        tokens.push(create(TokenType.BracketRight, source, range));
+                        break;
                     case "=":
                         if (pick(range, source) === "=") {
                             advance(range);

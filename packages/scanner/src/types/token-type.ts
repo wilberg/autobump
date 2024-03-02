@@ -12,6 +12,8 @@ export enum TokenType {
     LessEqual = "less-equal",
     ParenthesisLeft = "parenthesis-left",
     ParenthesisRight = "parenthesis-right",
+    BracketLeft = "bracket-left",
+    BracketRight = "bracket-right",
     BlockOpen = "block-open",
     BlockAlternate = "block-alternate",
     BlockClose = "block-close",

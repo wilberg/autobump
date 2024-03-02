@@ -16,8 +16,6 @@ export function parse(tokens: Token[]): Program {
 
     return {
         type: "Program",
-        from: fragments[0]?.from ?? 0,
-        to: fragments[fragments.length - 1]?.to ?? 0,
         fragments
     }
 }

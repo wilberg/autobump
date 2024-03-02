@@ -16,8 +16,6 @@ export function parseFragments(context: Context, predicate?: (token: Token) => b
             case TokenType.Constant:
                 fragments.push({
                     type: "Constant",
-                    from: token.range[0],
-                    to: token.range[1],
                     value: token.value
                 } as Constant)
                 break;
@@ -31,8 +29,6 @@ export function parseFragments(context: Context, predicate?: (token: Token) => b
                     fragments.push({
                         type: "Tag",
                         expression,
-                        from: token.range[0],
-                        to: closer.range[1]
                     } as Tag)
                 }
                 break;
