@@ -1,6 +1,7 @@
 {
   "name": "tagup-language-support",
   "displayName": "Tagup Language Support",
+  "publisher": "tagup",
   "private": false,
   "description": "Language support for tagup",
   "version": "1.0.1",
@@ -35,6 +36,6 @@
   },
   "scripts": {
     "prepublish": "vsce package",
-    "publish": "vsce publish --allow-missing-repository --skip-license --skip-duplicate"
+    "publish": "vsce publish  --allow-missing-repository --skip-license --skip-duplicate"
   }
 }
