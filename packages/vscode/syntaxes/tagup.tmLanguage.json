@@ -20,7 +20,7 @@
 			"name": "constant.numeric.tagup"
 		},
 		"keyword": {
-            "match": "(#if|/if|#for|/for|:else)",
+            "match": "(#if|/if|#for|/for|:else|use|in)",
             "name": "keyword.control.tagup"
         },
 		"call": {
