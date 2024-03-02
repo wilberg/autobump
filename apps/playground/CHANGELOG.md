@@ -1,5 +1,15 @@
 # @tagup/playground
 
+## 0.0.8
+
+### Patch Changes
+
+- Updated dependencies [6fcaed4]
+- Updated dependencies [00acf2e]
+  - @tagup/compiler@2.3.1
+  - @tagup/parser@2.2.1
+  - @tagup/scanner@2.2.1
+
 ## 0.0.7
 
 ### Patch Changes

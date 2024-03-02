@@ -1,5 +1,12 @@
 # @tagup/compiler
 
+## 2.3.1
+
+### Patch Changes
+
+- 6fcaed4: Added use directive to compiler, parser and scanner. Not yet supported in JSAdapter
+- 00acf2e: remove unused imports
+
 ## 2.3.0
 
 ### Minor Changes

@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.5
+
+### Patch Changes
+
+- dabeb76: Add zero-width assertion to keywords in vscode extension
+
 ## 1.1.4
 
 ### Patch Changes
