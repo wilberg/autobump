@@ -1,5 +1,11 @@
 # @tagup/compiler
 
+## 2.3.2
+
+### Patch Changes
+
+- 1aa7c9e: Properly highlight block statements, print use path as string
+
 ## 2.3.1
 
 ### Patch Changes

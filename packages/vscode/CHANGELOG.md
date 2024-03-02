@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.6
+
+### Patch Changes
+
+- 1aa7c9e: Properly highlight block statements, print use path as string
+
 ## 1.1.5
 
 ### Patch Changes
