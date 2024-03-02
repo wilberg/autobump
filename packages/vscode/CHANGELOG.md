@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.2
+
+### Patch Changes
+
+- 15e7401: Add icons
+
 ## 1.1.0
 
 ### Minor Changes
