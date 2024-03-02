@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.1
+
+### Patch Changes
+
+- 67ce694: Fix deployment
+
 ## 1.0.0
 
 ### Major Changes

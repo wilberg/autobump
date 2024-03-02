@@ -3,7 +3,7 @@
   "displayName": "Tagup Language Support",
   "private": false,
   "description": "Language support for tagup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {},
   "engines": {
     "vscode": "^1.87.0"
