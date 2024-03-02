@@ -2,7 +2,7 @@
     "name": "@tagup/parser",
     "description": "A parser taking in a set of tokens, and producing a set of ASTs.",
     "private": true,
-    "version": "2.2.0",
+    "version": "2.1.0",
     "type": "module",
     "main": "src/index.ts",
     "devDependencies": {

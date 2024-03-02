@@ -1,11 +1,5 @@
 # @tagup/parser
 
-## 2.2.0
-
-### Minor Changes
-
-- ce8d541: Added support for function calls directly from a template.
-
 ## 2.1.0
 
 ### Minor Changes
