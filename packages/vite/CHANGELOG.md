@@ -1,5 +1,11 @@
 # @tagup/plugin-vite
 
+## 2.3.0
+
+### Minor Changes
+
+- 22dbaf1: Add support for lists
+
 ## 2.2.0
 
 ### Minor Changes

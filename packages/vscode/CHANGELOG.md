@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.0
+
+### Minor Changes
+
+- 22dbaf1: Add support for lists
+
 ## 1.0.2
 
 ### Patch Changes
