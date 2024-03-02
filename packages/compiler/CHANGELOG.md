@@ -1,5 +1,11 @@
 # @tagup/compiler
 
+## 2.2.0
+
+### Minor Changes
+
+- a3478e5: Added support for function calls directly from the template
+
 ## 2.1.0
 
 ### Minor Changes
