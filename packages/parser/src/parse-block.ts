@@ -4,7 +4,6 @@ import { parseFragments } from "./parse-fragments";
 import { Block } from "./types/block";
 import { Context } from "./types/context";
 import { ForBlock } from "./types/for-block";
-import { parseReference } from "./parse-reference";
 import { parseExpression } from "./parse-expression";
 import { IfBlock } from "./types/if-block";
 import { AstNode } from "./types/ast-node";
@@ -16,7 +15,7 @@ export function parseBlock(context: Context): Block<string> {
         case "for":
             const variable = consume(context, { type: TokenType.Identifier, message: "Exected identifier" })!;
             consume(context, { type: TokenType.Reserved, value: "as", message: "Expected reserved keyword 'as' following variable"});
-            const iterator = parseReference(context);
+            const iterator = parseExpression(context);
 
             const forFragments = parseFragments(context, (token) => token.type !== TokenType.BlockClose || token.value !== 'for');
             
@@ -27,8 +26,6 @@ export function parseBlock(context: Context): Block<string> {
                     type: "Identifier",
                     name: variable.value
                 },
-                from: 0,
-                to: 0,
                 fragments: forFragments
             } as ForBlock
         case "if":
@@ -58,8 +55,6 @@ export function parseBlock(context: Context): Block<string> {
 
             return {
                 type: "IfBlock",
-                from: 0,
-                to: 0,
                 test: expression,
                 fragments: ifFragments,
                 alternate: alternate
@@ -74,8 +69,6 @@ export function parseBlock(context: Context): Block<string> {
 
     return {
         type: "UnknownBlock",
-        from: 0,
-        to: 0,
         fragments
     }
 }

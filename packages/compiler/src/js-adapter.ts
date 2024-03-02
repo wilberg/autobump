@@ -10,6 +10,7 @@ import { Tag } from "@tagup/parser/src/types/tag";
 import { Binary } from "@tagup/parser/src/types/binary";
 import { Unary } from "@tagup/parser/src/types/unary";
 import { Grouping } from "@tagup/parser/src/types/grouping";
+import { Call } from "@tagup/parser/src/types/call";
 
 const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     const fragment = node.fragments.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
@@ -45,6 +46,12 @@ const transpileLoop = (node: ForBlock, prefix: string | null = "data", ignorePre
 const transpile = (node: AstNode<string>, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     let buffer = ``;
     switch (node.type) {
+        case "Call":
+            const call = node as Call;
+            const callee = transpile(call.callee, prefix, ignorePrefix);
+            const args = call.arguments.map(arg => transpile(arg, prefix, ignorePrefix)).join(',');
+            buffer += `${callee}(${args})`;
+            break;
         case "Grouping":
             const grouping = node as Grouping;
             buffer += `(${transpile(grouping.expression, prefix, ignorePrefix)})`

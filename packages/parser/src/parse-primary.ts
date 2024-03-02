@@ -7,6 +7,7 @@ import { parseReference } from "./parse-reference";
 import { parseExpression } from "./parse-expression";
 import { Grouping } from "./types/grouping";
 import { peek } from "./peek";
+import { List } from "./types/list";
 
 export function parsePrimary(context: Context): Expression<string>|null {
     const token = peek(context)!;
@@ -26,6 +27,20 @@ export function parsePrimary(context: Context): Expression<string>|null {
                 kind: "string",
                 value: token.value
             } as Literal;
+        case TokenType.BracketLeft:
+            consume(context); // Consumes the [
+            const items = [];
+            while (peek(context)?.type !== TokenType.BracketRight) {
+                items.push(parseExpression(context)); // Parse the expression
+                if (peek(context)?.type === TokenType.Comma) {
+                    consume(context); // Consumes the ,
+                }
+            }
+            consume(context, { type: TokenType.BracketRight, message: "Expected ] after list"}); // Consumes the ]
+            return {
+                type: "List",
+                items
+            } as List;
         case TokenType.Identifier:
             return parseReference(context);
         default:
