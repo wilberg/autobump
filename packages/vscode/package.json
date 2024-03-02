@@ -22,5 +22,9 @@
       "scopeName": "source.tu",
       "path": "./syntaxes/tagup.tmLanguage.json"
     }]
+  },
+  "scripts": {
+    "prepublish": "vsce package",
+    "publish": "vsce publish"
   }
 }
