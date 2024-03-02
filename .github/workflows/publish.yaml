@@ -50,7 +50,9 @@ jobs:
           git push
 
       - name: Publish
-        run: pnpm run -r publish
+        run: |
+          pnpm -r publish
+          pnpm run -r publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

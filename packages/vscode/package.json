@@ -2,7 +2,7 @@
   "name": "tagup-language-support",
   "displayName": "Tagup Language Support",
   "publisher": "tagup",
-  "private": false,
+  "private": true,
   "description": "Language support for tagup",
   "version": "1.0.2",
   "repository": {},
