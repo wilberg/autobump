@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.0.2
+
+### Patch Changes
+
+- bd5bd59: add publisher id
+
 ## 1.0.1
 
 ### Patch Changes
