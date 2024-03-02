@@ -3,10 +3,8 @@
   "displayName": "Tagup Language Support",
   "private": false,
   "description": "Language support for tagup",
-  "version": "0.0.1",
-  "repository": {
-
-  },
+  "version": "0.1.0",
+  "repository": {},
   "engines": {
     "vscode": "^1.87.0"
   },
@@ -14,17 +12,26 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "tagup",
-      "aliases": ["Tagup", "tagup"],
-      "extensions": [".tu"],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "tagup",
-      "scopeName": "source.tu",
-      "path": "./syntaxes/tagup.tmLanguage.json"
-    }]
+    "languages": [
+      {
+        "id": "tagup",
+        "aliases": [
+          "Tagup",
+          "tagup"
+        ],
+        "extensions": [
+          ".tu"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "tagup",
+        "scopeName": "source.tu",
+        "path": "./syntaxes/tagup.tmLanguage.json"
+      }
+    ]
   },
   "scripts": {
     "prepublish": "vsce package",
