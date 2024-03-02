@@ -8,6 +8,7 @@ import { parseExpression } from "./parse-expression";
 import { Grouping } from "./types/grouping";
 import { peek } from "./peek";
 import { List } from "./types/list";
+import { Use } from "./types/use";
 
 export function parsePrimary(context: Context): Expression<string>|null {
     const token = peek(context)!;
@@ -43,18 +44,40 @@ export function parsePrimary(context: Context): Expression<string>|null {
             } as List;
         case TokenType.Identifier:
             return parseReference(context);
-        default:
-            break;
-    }
+        case TokenType.Reserved:
+            if (token.value === "true" || token.value === "false") {
+                consume(context);
+                return {
+                    type: "Literal",
+                    kind: "boolean",
+                    value: token.value === "true"
+                } as Literal;
+            } else if (token.value === "null") {
+                consume(context);
+                return {
+                    type: "Literal",
+                    kind: "null",
+                    value: null
+                } as Literal;
+            } else if (token.value === "use") {
+                consume(context);
+                const path = consume(context, { type: TokenType.String, message: "Expected string after use" });
 
-    if (token.type === TokenType.ParenthesisLeft) {
-        consume(context);
-        const expression = parseExpression(context);
-        consume(context, { type: TokenType.ParenthesisRight, message: "Expected ) after expression"})
-        return {
-            type: "Grouping",
-            expression
-        } as Grouping
+                return {
+                    type: "Use",
+                    path: path?.value
+                } as Use;
+            }
+            break;
+        case TokenType.ParenthesisLeft:
+            consume(context);
+            const expression = parseExpression(context);
+            consume(context, { type: TokenType.ParenthesisRight, message: "Expected ) after expression"})
+            return {
+                type: "Grouping",
+                expression
+            } as Grouping;
+        default: break;
     }
 
     return null;

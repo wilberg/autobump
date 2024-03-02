@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import { IfBlock } from "@tagup/parser/src/types/if-block";
 import { Adapter } from "./types/adapter"
 import { ForBlock } from "@tagup/parser/src/types/for-block";
@@ -12,6 +13,8 @@ import { Unary } from "@tagup/parser/src/types/unary";
 import { Grouping } from "@tagup/parser/src/types/grouping";
 import { Call } from "@tagup/parser/src/types/call";
 import { List } from "@tagup/parser/src/types/list";
+import { Use } from "@tagup/parser/src/types/use";
+import { compile } from '.';
 
 const transpileIf = (node: IfBlock, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     const fragment = node.fragments.map(subnode => transpile(subnode, prefix, ignorePrefix)).join('');
@@ -47,6 +50,10 @@ const transpileLoop = (node: ForBlock, prefix: string | null = "data", ignorePre
 const transpile = (node: AstNode<string>, prefix: string | null = "data", ignorePrefix: string[] = []) => {
     let buffer = ``;
     switch (node.type) {
+        case "Use":
+            const use = node as Use;
+            buffer += `/* import from "${use.path}" not yet supported */`;
+            break;
         case "List":
             const list = node as List;
             buffer += `[${list.items.map(item => transpile(item, prefix, ignorePrefix)).join(',')}]`;
