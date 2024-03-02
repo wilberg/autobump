@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.3
+
+### Patch Changes
+
+- fbd8cbe: Swapped light and dark icon
+
 ## 1.1.2
 
 ### Patch Changes
