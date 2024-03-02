@@ -25,7 +25,7 @@ export function parseFragments(context: Context, predicate?: (token: Token) => b
                     fragments.push(parseBlock(context))
                 } else if (token.type !== TokenType.BlockClose && token.type !== TokenType.BlockAlternate) {
                     const expression = parseExpression(context);
-                    const closer = consume(context, { type: TokenType.DelimiterRight, message: `Expected tag closer.` })!;
+                    consume(context, { type: TokenType.DelimiterRight, message: `Expected tag closer.` })!; // Consume the right delimiter.
                     fragments.push({
                         type: "Tag",
                         expression,
