@@ -1,7 +1,7 @@
 {
   "name": "tagup-language-support",
   "displayName": "Tagup Language Support",
-  "private": false,
+  "private": true,
   "description": "Language support for tagup",
   "version": "1.0.0",
   "repository": {},
