@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.1.4
+
+### Patch Changes
+
+- c75d8d8: Add syntax highlighting for use and in
+
 ## 1.1.3
 
 ### Patch Changes
