@@ -1,6 +1,7 @@
 {
   "name": "tagup",
   "displayName": "Tagup",
+  "private": true,
   "description": "",
   "version": "0.0.1",
   "engines": {
