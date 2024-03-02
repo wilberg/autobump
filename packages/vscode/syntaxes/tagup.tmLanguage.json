@@ -19,14 +19,18 @@
 			"match": "\\b\\d+\\b",
 			"name": "constant.numeric.tagup"
 		},
-		"identifier": {
-			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b",
-			"name": "variable.other.tagup"
-		},
 		"keyword": {
             "match": "(#if|/if|#for|/for|:else)",
             "name": "keyword.control.tagup"
         },
+		"call": {
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\(",
+			"name": "support.function.tagup"
+		},
+		"identifier": {
+			"match": "\\b[a-zA-Z_][a-zA-Z0-9_]*\\b",
+			"name": "variable.other.tagup"
+		},
 		"block": {
 			"begin": "\\{",
 			"end": "\\}",
@@ -49,6 +53,12 @@
 				},
 				{
 					"include": "#operator"
+				},
+				{
+					"include": "#bracket"
+				},
+				{
+					"include": "#call"
 				},
 				{
 					"include": "#identifier"
